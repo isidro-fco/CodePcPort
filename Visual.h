@@ -27,6 +27,8 @@ extern Font fuente1;
 extern Font fuente2;
 extern Texture2D logo;
 extern Texture2D logo_devs;
+extern Texture2D menu_img;
+extern Texture2D salida_img;
 
 class BotonTexto
 {
@@ -42,6 +44,19 @@ public:
 	Color ObtenerColorBase() const { return color_base; }
 	BotonTexto(const char* t, Rectangle a, Font f, float tf, Color c, int id) : texto(t), area(a), fuente(f), tamanio_fuente(tf), color_base(c), id_accion(id) {}
 	void Dibujar()const;
+	int ManejarEntrada() const;
+};
+
+class BotonImagen
+{
+private:
+	Texture2D imagen;
+	Rectangle area;
+	int id_accion;
+	Color color;
+public:
+	BotonImagen(Texture2D img, Rectangle a, int id): imagen(img), area(a), id_accion(id), color(arena){}
+	void Dibujar() const;
 	int ManejarEntrada() const;
 };
 

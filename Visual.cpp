@@ -23,6 +23,8 @@ Font fuente1 = { 0 };
 Font fuente2 = { 0 };
 Texture2D logo = { 0 };
 Texture2D logo_devs = { 0 };
+Texture2D menu_img = { 0 };
+Texture2D salida_img = { 0 };
 
 Color BotonTexto::OscurecerColor(Color original, int cantidad) const
 {
@@ -142,9 +144,13 @@ void InicializarImagenes()
 {
 	logo = LoadTexture("assets/logo.png");
 	logo_devs = LoadTexture("assets/logo_devs.png");
+	menu_img = LoadTexture("assets/menu.png");
+	salida_img = LoadTexture("assets/salida.png");
 
 	SetTextureFilter(logo, TEXTURE_FILTER_BILINEAR);
 	SetTextureFilter(logo_devs, TEXTURE_FILTER_BILINEAR);
+	SetTextureFilter(menu_img, TEXTURE_FILTER_BILINEAR);
+	SetTextureFilter(salida_img, TEXTURE_FILTER_BILINEAR);
 }
 
 void DescargarFuentes()
@@ -157,6 +163,8 @@ void DescargarImagenes()
 {
 	UnloadTexture(logo);
 	UnloadTexture(logo_devs);
+	UnloadTexture(menu_img);
+	UnloadTexture(salida_img);
 }
 
 void DrawTextCenterHorizontal(Font fuente, const char* texto, float tamanio_fuente, float espaciado, float pos_y, Color color)
