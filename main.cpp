@@ -1,5 +1,6 @@
 #include "Gestor.h"
 #include "Visual.h"
+#include "raylib.h"
 #include <iostream>
 
 int main(void)
@@ -25,10 +26,17 @@ int main(void)
 
 	SetTargetFPS(60);
 
+	MenuLateral menu(ancho_ventana, alto_ventana, fuente1, verde_esmeralda, arena);
+
+	int estado_menu = 0;
+
 	while (!WindowShouldClose())
 	{
 		ancho_ventana = GetScreenWidth();
 		alto_ventana = GetScreenHeight();
+		
+		menu.RecalcularDimensiones(ancho_ventana, alto_ventana, fuente1);
+
 		BeginDrawing();
 		ClearBackground(fondo);
 		/*
@@ -41,7 +49,12 @@ int main(void)
 
 		Reloj(fuente1);
 
-		MenuLateral(logo, fuente1, fuente2);
+		estado_menu = menu.ActualizarYDibujar(logo);
+
+		if (estado_menu != 0)
+		{
+			std::cout << "Boton presionado con ID: " << estado_menu << std::endl;
+		}
 
 		DrawText(TextFormat("Monitor actual: %d", GetCurrentMonitor()), 190, 300, 20, DARKGRAY);
 		EndDrawing();
