@@ -20,22 +20,19 @@ int main(void)
 	// Maximiza la pantalla
 	SetWindowState(FLAG_WINDOW_MAXIMIZED);
 
-
 	InicializarFuentes();
 	InicializarImagenes();
 
+
 	SetTargetFPS(60);
-
-	MenuLateral menu(ancho_ventana, alto_ventana, fuente1, verde_esmeralda, arena);
-
-	int estado_menu = 0;
 
 	while (!WindowShouldClose())
 	{
 		ancho_ventana = GetScreenWidth();
 		alto_ventana = GetScreenHeight();
-		
-		menu.RecalcularDimensiones(ancho_ventana, alto_ventana, fuente1);
+		pos_mouse = GetMousePosition();
+
+		ConfigurarBotonImagen();
 
 		BeginDrawing();
 		ClearBackground(fondo);
@@ -47,25 +44,53 @@ int main(void)
 		}
 		*/
 
-		Reloj(fuente1);
-
-		estado_menu = menu.ActualizarYDibujar(logo);
-
-		if (estado_menu != 0)
+		if (desplegar_menu == true)
 		{
-			std::cout << "Boton presionado con ID: " << estado_menu << std::endl;
+			opcion_menu = MenuLateral(logo, fuente1, fuente2);
+			if (opcion_menu != 0)
+			{
+				desplegar_menu = false;
+				switch (opcion_menu)
+				{
+				case 1:
+					break;
+				case 6:
+					usuarios(logo, fuente1, fuente2);
+					break;
+				}
+			}
+			zona_no_menu = { ancho_ventana / 3.5f,0, ancho_ventana - (ancho_ventana / 3.5f), (float)alto_ventana };
+			if (CheckCollisionPointRec(pos_mouse, zona_no_menu))
+			{
+				if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+				{
+					desplegar_menu = false;
+				}
+			}
+		}
+		else
+		{
+			const float porcentaje_ancho_deseado = 0.30f;
+			float ancho_deseado = ancho_ventana * porcentaje_ancho_deseado;
+			float escala = ancho_deseado / (float)logo.width;
+			DrawTextureEx(logo, { ancho_ventana * 0.35f, alto_ventana * 0.1f }, 0.0f, escala,WHITE);
+			if (ManejarBotonImagen(boton_menu))
+			{
+				desplegar_menu = true;
+			}
+
 		}
 
-		DrawText(TextFormat("Monitor actual: %d", GetCurrentMonitor()), 190, 300, 20, DARKGRAY);
+
+
+		Reloj(fuente1);
+		if (ManejarBotonImagen(boton_salida))
+		{
+			DescargarFuentes();
+			DescargarImagenes();
+			CloseWindow();
+			return 0;
+		}
 		EndDrawing();
 	}
-
-	DescargarFuentes();
-	DescargarImagenes();
-	CloseWindow();
-
-    Gestor gestor;
-    gestor.mostrarMenu();
-
-    return 0;
 }
