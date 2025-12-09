@@ -1,5 +1,6 @@
 #pragma once
 #include "Usuario.h"
+#include "Reserva.h"
 #include <vector>
 
 using std::string;

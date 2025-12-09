@@ -247,32 +247,32 @@ int MenuLateral(Texture2D logo, Font fuente1, Font fuente2)
 
 	const char* texto_editar = "EDITAR RESERVAR";
 	tamanio_texto = MeasureTextEx(fuente1, texto_editar, tamanio_fuente, 0);
-	BotonTexto btn_editar = { texto_editar,{ ceja_izquierda, alto_menu * 0.3f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,verde_menta };
+	BotonTexto btn_editar = { texto_editar,{ ceja_izquierda, alto_menu * 0.3f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,arena };
 	if (ManejarBotonTexto(btn_editar))
 		return 2;
 
 	const char* texto_eliminar = "ELIMINAR RESERVAR";
 	tamanio_texto = MeasureTextEx(fuente1, texto_eliminar, tamanio_fuente, 0);
-	BotonTexto btn_eliminar = { texto_eliminar,{ ceja_izquierda, alto_menu * 0.4f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,verde_menta };
+	BotonTexto btn_eliminar = { texto_eliminar,{ ceja_izquierda, alto_menu * 0.4f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,arena };
 	if (ManejarBotonTexto(btn_eliminar))
 		return 3;
 
 	const char* texto_salas = "SALAS";
 	tamanio_texto = MeasureTextEx(fuente1, texto_salas, tamanio_fuente, 0);
-	BotonTexto btn_salas = { texto_salas,{ ceja_izquierda, alto_menu * 0.5f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,verde_menta };
+	BotonTexto btn_salas = { texto_salas,{ ceja_izquierda, alto_menu * 0.5f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,arena };
 	if (ManejarBotonTexto(btn_salas))
 		return 4;
 
 
 	const char* texto_computadoras = "COMPUTADORAS";
 	tamanio_texto = MeasureTextEx(fuente1, texto_computadoras, tamanio_fuente, 0);
-	BotonTexto btn_computadoras = { texto_computadoras,{ ceja_izquierda, alto_menu * 0.6f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,verde_menta };
+	BotonTexto btn_computadoras = { texto_computadoras,{ ceja_izquierda, alto_menu * 0.6f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,arena };
 	if (ManejarBotonTexto(btn_computadoras))
 		return 5;
 
 	const char* texto_usuarios = "USUARIOS";
 	tamanio_texto = MeasureTextEx(fuente1, texto_usuarios, tamanio_fuente, 0);
-	BotonTexto btn_usuarios = { texto_usuarios,{ ceja_izquierda, alto_menu * 0.7f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,verde_menta };
+	BotonTexto btn_usuarios = { texto_usuarios,{ ceja_izquierda, alto_menu * 0.7f, tamanio_texto.x, tamanio_texto.y },fuente1,tamanio_fuente,arena };
 	if (ManejarBotonTexto(btn_usuarios))
 		return 6;
 
@@ -378,7 +378,7 @@ void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor)
 	}
 	// ETAPA 1: MATRÍCULA
 	if (etapa_edicion == 1) {
-		DrawTextEx(fuente2, "MATRICULA:", { x_etiqueta, area_matricula.y }, tamano_fuente_datos, espaciado, verde_menta);
+		DrawTextEx(fuente2, "MATRICULA:", { x_etiqueta, area_matricula.y }, tamano_fuente_datos, espaciado, arena);
 		Color color_borde = (campo_activo_res == 1) ? GREEN : LIGHTGRAY;
 		DrawRectangleRec(area_matricula, color_borde);
 		DrawRectangle(area_matricula.x + grosor_borde, area_matricula.y + grosor_borde,
@@ -422,7 +422,7 @@ void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor)
 	}
 	// ETAPA 2: TIPO DE RESERVA (Solo para Profesores)
 	else if (etapa_edicion == 2) {
-		DrawTextEx(fuente2, "TIPO DE RESERVA:", { x_etiqueta, y_actual }, tamano_fuente_datos, espaciado, verde_menta);
+		DrawTextEx(fuente2, "TIPO DE RESERVA:", { x_etiqueta, y_actual }, tamano_fuente_datos, espaciado, arena);
 		y_actual += altura_linea * 2.0f;
 
 		float x_btn = ancho_ventana * 0.25f;
@@ -464,7 +464,7 @@ void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor)
 		Rectangle area_hora_inicio_draw = { x_campo, y_actual, ancho_campo, altura_campo };
 		Rectangle area_hora_fin_draw = { x_campo, y_actual + altura_campo + altura_linea, ancho_campo, altura_campo };
 
-		DrawTextEx(fuente2, "HORA INICIO (HH:MM):", { x_etiqueta, area_hora_inicio_draw.y }, tamano_fuente_datos, espaciado, verde_menta);
+		DrawTextEx(fuente2, "HORA INICIO (HH:MM):", { x_etiqueta, area_hora_inicio_draw.y }, tamano_fuente_datos, espaciado, arena);
 		Color color_borde_hi = (campo_activo_res == 3) ? GREEN : LIGHTGRAY;
 		DrawRectangleRec(area_hora_inicio_draw, color_borde_hi);
 		DrawRectangle(area_hora_inicio_draw.x + grosor_borde, area_hora_inicio_draw.y + grosor_borde,
@@ -472,7 +472,7 @@ void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor)
 		DrawTextEx(fuente1, entrada_hora_inicio, { area_hora_inicio_draw.x + 10, area_hora_inicio_draw.y + (altura_campo - altura_texto_simple) / 2 },
 			tamano_fuente_datos, espaciado, BLACK);
 
-		DrawTextEx(fuente2, "HORA FIN (HH:MM):", { x_etiqueta, area_hora_fin_draw.y }, tamano_fuente_datos, espaciado, verde_menta);
+		DrawTextEx(fuente2, "HORA FIN (HH:MM):", { x_etiqueta, area_hora_fin_draw.y }, tamano_fuente_datos, espaciado, arena);
 		Color color_borde_hf = (campo_activo_res == 4) ? GREEN : LIGHTGRAY;
 		DrawRectangleRec(area_hora_fin_draw, color_borde_hf);
 		DrawRectangle(area_hora_fin_draw.x + grosor_borde, area_hora_fin_draw.y + grosor_borde,
@@ -511,7 +511,7 @@ void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor)
 	// ETAPA 4: SELECCIÓN FINAL (Sala A/B o PC #)
 	else if (etapa_edicion == 4) {
 		if (tipo_reserva_seleccionado == 1) {
-			DrawTextEx(fuente2, "SELECCIONAR SALA:", { x_etiqueta, y_actual }, tamano_fuente_datos, espaciado, verde_menta);
+			DrawTextEx(fuente2, "SELECCIONAR SALA:", { x_etiqueta, y_actual }, tamano_fuente_datos, espaciado, arena);
 			y_actual += altura_linea;
 
 			float x_btn = ancho_ventana * 0.25f;
@@ -536,7 +536,7 @@ void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor)
 		else {
 			Rectangle area_pc_num_draw = { x_campo, y_actual, ancho_campo, altura_campo };
 
-			DrawTextEx(fuente2, "NÚMERO DE PC (1-20):", { x_etiqueta, area_pc_num_draw.y }, tamano_fuente_datos, espaciado, verde_menta);
+			DrawTextEx(fuente2, "NÚMERO DE PC (1-20):", { x_etiqueta, area_pc_num_draw.y }, tamano_fuente_datos, espaciado, arena);
 			Color color_borde_pc = (campo_activo_res == 5) ? GREEN : LIGHTGRAY;
 			DrawRectangleRec(area_pc_num_draw, color_borde_pc);
 			DrawRectangle(area_pc_num_draw.x + grosor_borde, area_pc_num_draw.y + grosor_borde,
@@ -593,7 +593,7 @@ void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor)
 		DrawTextCenterHorizontal(fuente1, "¡RESERVA CREADA CON ÉXITO!", tamano_seccion_titulo, espaciado, y_actual, verde_lima);
 		y_actual += altura_linea * 2.0f;
 
-		DrawTextCenterHorizontal(fuente2, "Resumen de la reserva:", tamano_fuente_datos, espaciado, y_actual, verde_menta);
+		DrawTextCenterHorizontal(fuente2, "Resumen de la reserva:", tamano_fuente_datos, espaciado, y_actual, arena);
 		y_actual += altura_linea;
 
 		string resumen = "Matricula: " + string(entrada_matricula) + "\n" +
@@ -715,13 +715,13 @@ void EditarReserva(Font fuente1, Font fuente2, Gestor& gestor)
 	// ETAPA 1: IDENTIFICACIÓN DE LA RESERVA (Matrícula y Hora Vieja)
 	if (etapa_edicion == 1)
 	{
-		DrawTextEx(fuente2, "MATRICULA:", { x_etiqueta, area_matricula.y }, tamano_fuente_datos, espaciado, verde_menta);
+		DrawTextEx(fuente2, "MATRICULA:", { x_etiqueta, area_matricula.y }, tamano_fuente_datos, espaciado, arena);
 		Color color_borde = (campo_activo == 1) ? GREEN : LIGHTGRAY;
 		DrawRectangleRec(area_matricula, color_borde);
 		DrawRectangle(area_matricula.x + grosor_borde, area_matricula.y + grosor_borde, area_matricula.width - 2 * grosor_borde, area_matricula.height - 2 * grosor_borde, color_fondo_campo);
 		DrawTextEx(fuente1, entrada_matricula, { area_matricula.x + 10, area_matricula.y + (altura_campo - altura_texto_simple) / 2 }, tamano_fuente_datos, espaciado, BLACK);
 
-		DrawTextEx(fuente2, "HORA ACTUAL (HH:MM):", { x_etiqueta, area_hora_vieja.y }, tamano_fuente_datos, espaciado, verde_menta);
+		DrawTextEx(fuente2, "HORA ACTUAL (HH:MM):", { x_etiqueta, area_hora_vieja.y }, tamano_fuente_datos, espaciado, arena);
 		color_borde = (campo_activo == 2) ? GREEN : LIGHTGRAY;
 		DrawRectangleRec(area_hora_vieja, color_borde);
 		DrawRectangle(area_hora_vieja.x + grosor_borde, area_hora_vieja.y + grosor_borde, area_hora_vieja.width - 2 * grosor_borde, area_hora_vieja.height - 2 * grosor_borde, color_fondo_campo);
@@ -760,7 +760,7 @@ void EditarReserva(Font fuente1, Font fuente2, Gestor& gestor)
 	// ETAPA 2: MODIFICACIÓN DE LA RESERVA ENCONTRADA (Nueva Hora)
 	else if (etapa_edicion == 2)
 	{
-		DrawTextEx(fuente2, "NUEVA HORA INICIO (HH:MM):", { x_etiqueta, area_nueva_hora.y }, tamano_fuente_datos, espaciado, verde_menta);
+		DrawTextEx(fuente2, "NUEVA HORA INICIO (HH:MM):", { x_etiqueta, area_nueva_hora.y }, tamano_fuente_datos, espaciado, arena);
 		Color color_borde = (campo_activo == 3) ? GREEN : LIGHTGRAY;
 		DrawRectangleRec(area_nueva_hora, color_borde);
 		DrawRectangle(area_nueva_hora.x + grosor_borde, area_nueva_hora.y + grosor_borde, area_nueva_hora.width - 2 * grosor_borde, area_nueva_hora.height - 2 * grosor_borde, color_fondo_campo);
@@ -903,14 +903,14 @@ void EliminarReserva(Font fuente1, Font fuente2, Gestor& gestor)
 	int grosor_borde = 2;
 	float altura_texto_simple = MeasureTextEx(fuente2, "A", tamano_fuente_datos, espaciado).y;
 
-	DrawTextEx(fuente2, "MATRICULA:", { x_etiqueta, area_matricula.y }, tamano_fuente_datos, espaciado, verde_menta);
+	DrawTextEx(fuente2, "MATRICULA:", { x_etiqueta, area_matricula.y }, tamano_fuente_datos, espaciado, arena);
 	color_borde = (campo_activo == 1) ? GREEN : LIGHTGRAY;
 	DrawRectangleRec(area_matricula, color_borde);
 	DrawRectangle(area_matricula.x + grosor_borde, area_matricula.y + grosor_borde, area_matricula.width - 2 * grosor_borde, area_matricula.height - 2 * grosor_borde, color_fondo_campo);
 	DrawTextEx(fuente1, entrada_matricula, { area_matricula.x + 10, area_matricula.y + (altura_campo - altura_texto_simple) / 2 }, tamano_fuente_datos, espaciado, BLACK);
 
 	// CAMPO HORA DE INICIO
-	DrawTextEx(fuente2, "HORA DE INICIO (HH:MM):", { x_etiqueta, area_hora.y }, tamano_fuente_datos, espaciado, verde_menta);
+	DrawTextEx(fuente2, "HORA DE INICIO (HH:MM):", { x_etiqueta, area_hora.y }, tamano_fuente_datos, espaciado, arena);
 	color_borde = (campo_activo == 2) ? GREEN : LIGHTGRAY;
 	DrawRectangleRec(area_hora, color_borde);
 	DrawRectangle(area_hora.x + grosor_borde, area_hora.y + grosor_borde, area_hora.width - 2 * grosor_borde, area_hora.height - 2 * grosor_borde, color_fondo_campo);
@@ -1379,7 +1379,7 @@ void LimpiarCamposEntrada()
 	sala_seleccionada = -1;
 	tipo_usuario_detectado = "";
 }
-//**********************************************************************************************************************************************
+
 bool EsNumero(const char* texto)
 {
 	for (int i = 0; texto[i] != '\0'; i++) {
@@ -1389,7 +1389,7 @@ bool EsNumero(const char* texto)
 	}
 	return true;
 }
-//**********************************************************************************************************************************************
+
 bool ValidarFormatoHoraSimple(const char* hora)
 {
 	size_t len = strlen(hora);
@@ -1425,7 +1425,7 @@ bool ValidarFormatoHoraSimple(const char* hora)
 
 	return true;
 }
-//**********************************************************************************************************************************************
+
 bool ValidarRangoPC(const char* pc_num)
 {
 	if (!EsNumero(pc_num)) return false;
@@ -1433,7 +1433,7 @@ bool ValidarRangoPC(const char* pc_num)
 	int num = atoi(pc_num);
 	return (num >= 1 && num <= 20);
 }
-//**********************************************************************************************************************************************
+
 void ManejarEntradaMatricula() {
 	int tecla = GetCharPressed();
 	while (tecla > 0) {
@@ -1448,7 +1448,7 @@ void ManejarEntradaMatricula() {
 		entrada_matricula[strlen(entrada_matricula) - 1] = '\0';
 	}
 }
-//**********************************************************************************************************************************************
+
 void ManejarEntradaHora(char* entrada_hora) {
 	int tecla = GetCharPressed();
 	while (tecla > 0) {
@@ -1483,7 +1483,7 @@ void ManejarEntradaHora(char* entrada_hora) {
 		}
 	}
 }
-//**********************************************************************************************************************************************
+
 void ManejarEntradaNumerica(char* entrada, int max_len) {
 	int tecla = GetCharPressed();
 	while (tecla > 0) {
@@ -1498,4 +1498,3 @@ void ManejarEntradaNumerica(char* entrada, int max_len) {
 		entrada[strlen(entrada) - 1] = '\0';
 	}
 }
-//**********************************************************************************************************************************************

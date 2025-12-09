@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "Gestor.h"
 #include <iostream>
 #include <string>
 #include <cstdbool>
@@ -27,6 +28,22 @@ extern int alto_ventana;
 extern bool pantalla_devs;
 extern bool desplegar_menu;
 extern int opcion_menu;
+extern int etapa_edicion;
+extern char entrada_matricula[16];
+extern char entrada_hora_inicio[6];
+extern char entrada_hora_fin[6];
+extern char entrada_pc_num[3];
+extern char entrada_hora[6];
+extern char entrada_nueva_hora[6];
+extern int campo_activo;
+extern bool mostrar_error;
+extern bool reserva_encontrada;
+extern int tipo_reserva_seleccionado;
+extern int sala_seleccionada;
+extern  int campo_activo_res;
+extern bool mostrar_error_res;
+extern string tipo_usuario_detectado;
+extern string mensaje_error;
 
 // BOTONES
 extern BotonImagen boton_menu;
@@ -41,6 +58,11 @@ extern Color verde_esmeralda;
 extern Color verde_pasto;
 extern Color verde_manzana;
 extern Color arena;
+extern Color azul_marino;
+extern Color azul_turquesa;
+extern Color verde_menta;
+extern Color verde_mar;
+extern Color verde_lima;
 // Archivos
 extern Font fuente1;
 extern Font fuente2;
@@ -71,4 +93,40 @@ int MenuLateral(Texture2D logo, Font fuente1, Font fuente2);
 
 void Reloj(Font fuente);
 
-void usuarios(Texture2D logo, Font fuente1, Font fuente2);
+// FUNCIONES PRINCIPALES
+void CrearReserva(Font fuente1, Font fuente2, Gestor& gestor);
+
+void EditarReserva(Font fuente1, Font fuente2, Gestor& gestor);
+
+void EliminarReserva(Font fuente1, Font fuente2, Gestor& gestor);
+
+void SalasComputo(Font fuente1, Font fuente2);
+
+void SalasComputoAYB(Font fuente1, Font fuente2, Gestor& gestor);
+
+void SalaComputoC(Font fuente1, Font fuente2, Gestor& gestor);
+
+void TodasSalasComputo(Font fuente1, Font fuente2, Gestor& gestor);
+
+void ListaComputadoras(Font fuente1, Font fuente2, Gestor& gestor);
+
+void Usuarios(Font fuente1, Font fuente2);
+
+void ListaProfesores(Font fuente1, Font fuente2, Gestor& gestor);
+
+void ListaAlumnos(Font fuente1, Font fuente2, Gestor& gestor);
+
+void LimpiarCamposEntrada();
+
+// Funciones de validación
+bool EsNumero(const char* texto);
+
+bool ValidarFormatoHoraSimple(const char* hora);
+
+bool ValidarRangoPC(const char* pc_num);
+
+void ManejarEntradaMatricula();
+
+void ManejarEntradaHora(char* entrada_hora);
+
+void ManejarEntradaNumerica(char* entrada, int max_len);

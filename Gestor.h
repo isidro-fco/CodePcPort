@@ -38,6 +38,14 @@ public:
     void verListaAlumnos() const;
     Usuario* buscarUsuario(const string& matricula);
     bool verificarDisponibilidad(int salaId, const string& hora, int pc = -1) const;
+    bool reservarSala(const std::string& matricula, const std::string& hora_inicio, const std::string& hora_fin, int sala_id);
+    bool reservarPC(const std::string& matricula, const std::string& hora_inicio, const std::string& hora_fin, int pc_num);
+    bool editarReserva(const std::string& matricula, const std::string& hora_antigua, const std::string& hora_nueva);
     void agregarReserva(const Reserva& reserva);
+    void eliminarReservas(const std::string& matricula, const std::string& hora);
+    const vector<Sala>& obtenerSalas() const;
+    const vector<Computadora>& obtenerComputadoras() const;
+    const vector<Profesor>& obtenerProfesores() const;
+    const vector<Alumno>& obtenerAlumnos() const;
 };
 

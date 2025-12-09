@@ -37,4 +37,8 @@ public:
     // Visualización
     void verHorario() const;
     void verVistaActual() const;
+
+
+    const vector<Reserva>& getHorario() const { return horario; }
+    bool intentarEditarReserva(const string& matricula, const string& hora_antigua, const string& hora_nueva);
 };
